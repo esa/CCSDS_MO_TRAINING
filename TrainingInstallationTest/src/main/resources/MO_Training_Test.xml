@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mal:specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:mal="http://www.ccsds.org/schema/ServiceSchema"
+                   xmlns:com="http://www.ccsds.org/schema/COMSchema">
+  <mal:area name="MOTraining" number="101" version="1">
+    <mal:service xsi:type="com:ExtendedServiceType" name="TestInstall" number="100">
+      <mal:capabilitySet number="1">
+        <mal:requestIP name="testOperation" number="1" supportInReplay="false" comment="">
+          <mal:messages>
+            <mal:request comment="">
+              <mal:field name="mainArgument">
+                <mal:type area="MOTraining" service="TestInstall" name="TestComposite"/>
+              </mal:field>
+            </mal:request>
+            <mal:response>
+              <mal:field name="complexResponsePartA">
+                <mal:type area="MAL" name="Boolean"/>
+              </mal:field>
+              <mal:field name="complexResponsePartB">
+                <mal:type area="MOTraining" service="TestInstall" name="TestComposite"/>
+              </mal:field>
+            </mal:response>
+          </mal:messages>
+        </mal:requestIP>
+      </mal:capabilitySet>
+      
+      <mal:dataTypes>
+        <mal:composite name="TestComposite" shortFormPart="1" comment="">
+          <mal:extends>
+            <mal:type area="MAL" name="Composite"/>
+          </mal:extends>
+          <mal:field name="fieldA">
+            <mal:type area="MAL" name="Double"/>
+          </mal:field>
+          <mal:field name="fieldB">
+            <mal:type area="MAL" name="Double"/>
+          </mal:field>
+          <mal:field name="FieldC">
+            <mal:type area="MAL" name="Short"/>
+          </mal:field>
+        </mal:composite>
+      </mal:dataTypes>
+
+      <com:features>
+        <com:activityUsage comment="The COM Activity service should be used to monitor the transfer and execution of the operations."/>
+      </com:features>
+    </mal:service>
+  </mal:area>
+</mal:specification>
